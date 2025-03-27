@@ -1,0 +1,15 @@
+meta {
+  name: test2
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3001/data
+  body: json
+  auth: none
+}
+
+body:json {
+  {"name": "TestName", "value": 42}
+}
