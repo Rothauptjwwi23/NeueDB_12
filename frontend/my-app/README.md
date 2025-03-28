@@ -1,8 +1,7 @@
 Hallo Herr Scharle, wir wünschen eine angenehme Korrektur und Bewertung
 
 #################################################################
-
-https://github.com/Rothauptjwwi23/projektdb ; Main; Commit: NeueDB_A12 // 
+ 
 
 
 #################################################################
@@ -10,6 +9,7 @@ https://github.com/Rothauptjwwi23/projektdb ; Main; Commit: NeueDB_A12 //
 CouchDB Software installieren: https://couchdb.apache.org/#download
 
 Installation ausführen und (lokalen-) Benutzer anlegen. user:admin ; password:passwort1234 -> damit die Daten mit Schnittstelle übereinstimmen und abgerufen werden (siehe backend/core/db.js)
+Sie sollten automatisch nach installation eigentlich auf die CouchDb-Anwendung zugreifen können, falls nicht -> http://localhost:5984/_utils/
 
 In CouchDD zu "Databases" navigieren. Dann: "Create Database" und eine mit "users" für die Benutzer anlegen. Es wird ein Admin Account benötigt, der nicht über die Webanwendung erstellt werden kann. Anschließend "All documents" > "+" > "New Doc". Hinter/unter des "_id" Wertes dann folgendes einfügen: 
 

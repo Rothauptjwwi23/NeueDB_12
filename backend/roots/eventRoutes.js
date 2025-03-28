@@ -3,6 +3,7 @@
 import { getEvents, addEvent, bookEvent, getEventById } from "../core/eventStore.js";
 import { getBookingsByUser, addBooking } from "../core/bookingStore.js";
 import jwt from "jsonwebtoken";
+import { sendBookingConfirmation } from '../core/emailService.js';
 
 const checkAdminRole = async (request, reply, done) => {
   try {
@@ -124,6 +125,17 @@ export default async function eventRoutes(fastify, options) {
 
       // Buchung mit Benutzer-ID durchführen
       const bookingResult = await addBooking(decoded.user._id, eventId);
+      
+      // Hole Event-Details für die Email
+      const event = await getEventById(eventId);
+      
+      // Sende Bestätigungsmail
+      try {
+        await sendBookingConfirmation(decoded.user.email, event);
+      } catch (emailError) {
+        console.error("Email-Versand fehlgeschlagen:", emailError);
+        // Wir werfen hier keinen Fehler, da die Buchung trotzdem erfolgreich war
+      }
       
       reply.send({
         message: "Buchung erfolgreich!",
